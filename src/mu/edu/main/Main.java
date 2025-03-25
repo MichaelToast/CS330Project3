@@ -13,7 +13,11 @@ public class Main {
 	public static void main(String[] args) {
 		System.out.println("HELLO THERE!");
 		List<MidiEventData>midiEvents = MidiCsvParser.parseCsv("./files/songy.csv");
-
+		
+		
+		for (MidiEventData data: midiEvents) {
+			System.out.println(data);
+		}
 		
 		System.out.println("THANK YOU!!!!!");
 	}

@@ -2,6 +2,7 @@ package mu.edu.parser;
 import java.io.FileReader;
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import mu.edu.data.MidiEventData;
@@ -19,7 +20,7 @@ public class MidiCsvParser {
 	public static List<MidiEventData> parseCsv(String csvFile) {
 		FileReader filereader = null;
 		BufferedReader br = null;
-		List<MidiEventData> midiEvents = null; 
+		List<MidiEventData> midiEvents = new ArrayList<>(); 
 		
 		try {
 			filereader = new FileReader(csvFile);
@@ -28,10 +29,25 @@ public class MidiCsvParser {
 			
 			while ((line = br.readLine()) != null) {
 				String[] vals = line.split(",");
-				for (String item: vals) {
-					System.out.print(item.replace(" ", "") + ", ");
+				/*
+				 MidiEventData(int channel, int note, int startTick, int endTick, int velocity, int instrument)
+				 StartEndTick, Note on off, channel, note, instrument
+					0			1			2		3		4 
+				 */
+				if (vals[1].replace(" ", "").equals("Note_on_c")) {
+					// We have been given the opening duration of this note. 
+					midiEvents.add(new MidiEventData(
+							Integer.parseInt(vals[2]), 
+							Integer.parseInt(vals[3]), 
+							Integer.parseInt(vals[0]), 
+							0, 0, 
+							Integer.parseInt(vals[4]) ) );
 				}
-				System.out.print("\n");
+				else {
+					// We have been given the closing duration of this note. 
+					midiEvents.get(midiEvents.size() - 1).setEndTick(Integer.parseInt(vals[0]));
+					
+				}
 			}
 		}
 		catch (Exception e) {
@@ -51,13 +67,3 @@ public class MidiCsvParser {
 	}
     
 }
-
-
-/*
- Usage: List <MidiEventData> midiEvents=MidiCsvParser.parseCsv(”./files/mysterysong.csv”);
- 
- The CSV parser (MidiCsvParser ) should read each line, split the values by commas,
-and create MidiEventData objects.
- 
- 
- */

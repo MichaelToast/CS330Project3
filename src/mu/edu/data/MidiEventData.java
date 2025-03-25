@@ -16,6 +16,15 @@ public class MidiEventData {
         this.velocity = velocity;
         this.instrument = instrument;
     }
+    
+    public MidiEventData() {
+        this.channel = 0;
+        this.note = 0;
+        this.startTick = 0;
+        this.endTick = 0;
+        this.velocity = 0;
+        this.instrument = 0;
+    }
 
 ////Getters
     public int getChannel() {
