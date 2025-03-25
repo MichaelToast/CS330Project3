@@ -11,7 +11,7 @@ public class MidiEventData {
     public MidiEventData(int channel, int note, int startTick, int endTick, int velocity, int instrument) {
         this.channel = channel;
         this.note = note;
-        this. startTick = startTick;
+        this.startTick = startTick;
         this.endTick = endTick;
         this.velocity = velocity;
         this.instrument = instrument;
@@ -41,8 +41,8 @@ public class MidiEventData {
     public int getInstrument() {
         return instrument;
     }
+    
 ////Setters
-
     public void setChannel(int channel) {
         this.channel = channel;
     }
