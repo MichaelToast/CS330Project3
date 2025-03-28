@@ -4,15 +4,15 @@ public class MidiEventData {
     private int channel;
     private int note;
     private int startTick;
-    private int endTick;
+    private int noteOnOff;
     private int velocity;
     private int instrument;
 
-    public MidiEventData(int channel, int note, int startTick, int endTick, int velocity, int instrument) {
+    public MidiEventData(int channel, int note, int startTick, int noteOnOff, int velocity, int instrument) {
         this.channel = channel;
         this.note = note;
         this.startTick = startTick;
-        this.endTick = endTick;
+        this.noteOnOff = noteOnOff;
         this.velocity = velocity;
         this.instrument = instrument;
     }
@@ -21,7 +21,7 @@ public class MidiEventData {
         this.channel = 0;
         this.note = 0;
         this.startTick = 0;
-        this.endTick = 0;
+        this.noteOnOff = 0;
         this.velocity = 0;
         this.instrument = 0;
     }
@@ -39,8 +39,8 @@ public class MidiEventData {
         return startTick;
     }            
 
-    public int getEndTick() {
-        return endTick;
+    public int getNoteOnOff() {
+        return noteOnOff;
     }            
 
     public int getVelocity() {
@@ -64,8 +64,8 @@ public class MidiEventData {
         this.startTick = startTick;
     }
 
-    public void setEndTick(int endTick) {
-        this.endTick = endTick;
+    public void setNoteOnOff(int noteOnOff) {
+        this.noteOnOff = noteOnOff;
     }
 
     public void setVelocity(int velocity) {
@@ -82,7 +82,7 @@ public class MidiEventData {
                 "channel=" + channel +
                 ", note=" + note +
                 ", startTick=" + startTick +
-                ", endTick=" + endTick +
+                ", noteOnOff=" + noteOnOff +
                 ", velocity=" + velocity +
                 ", instrument=" + instrument +
                 '}';

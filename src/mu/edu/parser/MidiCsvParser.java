@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import mu.edu.data.MidiEventData;
+import javax.sound.midi.ShortMessage;
 
 public class MidiCsvParser {
 	/* May need to be abstract */
@@ -30,24 +31,18 @@ public class MidiCsvParser {
 			while ((line = br.readLine()) != null) {
 				String[] vals = line.split(",");
 				/*
-				 MidiEventData(int channel, int note, int startTick, int endTick, int velocity, int instrument)
-				 StartEndTick, Note on off, channel, note, instrument
-					0			1			2		3		4 
+				 MidiEventData(int channel, int note, int startTick, int noteOnOff, int velocity, int instrument)
+				 StartEndTick, Note on off, channel, note, velocity, instrument
+					0			1			2		  3		4			5
 				 */
-				if (vals[1].replace(" ", "").equals("Note_on_c")) {
-					// We have been given the opening duration of this note. 
-					midiEvents.add(new MidiEventData(
-							Integer.parseInt(vals[2]), 
-							Integer.parseInt(vals[3]), 
-							Integer.parseInt(vals[0]), 
-							0, 0, 
-							Integer.parseInt(vals[4]) ) );
-				}
-				else {
-					// We have been given the closing duration of this note. 
-					midiEvents.get(midiEvents.size() - 1).setEndTick(Integer.parseInt(vals[0]));
-					
-				}
+
+				midiEvents.add(new MidiEventData(
+						Integer.parseInt(vals[2]), 
+						Integer.parseInt(vals[3]), 
+						Integer.parseInt(vals[0]), 
+						( (vals[1].replace(" ", "").equals("Note_on_c")) ?  ShortMessage.NOTE_ON : ShortMessage.NOTE_OFF), 
+						Integer.parseInt(vals[4]),
+						Integer.parseInt(vals[5]) ) );
 			}
 		}
 		catch (Exception e) {
