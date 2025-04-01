@@ -1,4 +1,6 @@
 package mu.edu.factoryAbstracts;
+import javax.sound.midi.MidiEvent;
+
 import mu.edu.factories.*;
 
 public class StaccatoMidiEventFactoryAbstract implements MidiEventFactoryAbstract{
