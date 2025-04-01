@@ -1,5 +1,7 @@
 package mu.edu.factories;
 
+import javax.sound.midi.MidiEvent;
+
 public class StandardMidiEventFactory implements MidiEventFactory {
 
 	@Override
