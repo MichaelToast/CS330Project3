@@ -18,6 +18,16 @@ public class MidiCsvParser {
 		//
 	}
 	
+	/**
+     * Parses a CSV file containing MIDI event data and converts it to a list of {@link MidiEventData} objects.
+     * The expected CSV format is:
+     * StartEndTick, Note_on_c/Note_off_c, channel, note, velocity, instrument
+     * 
+     * @param csvFile The path to the CSV file to be parsed
+     * @return A list of {@link MidiEventData} objects representing the MIDI events from the CSV file
+     * @throws RuntimeException If an error occurs during file reading or parsing
+     */
+
 	public static List<MidiEventData> parseCsv(String csvFile) {
 		FileReader filereader = null;
 		BufferedReader br = null;

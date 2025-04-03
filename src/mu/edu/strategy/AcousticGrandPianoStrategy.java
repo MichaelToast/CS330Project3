@@ -7,7 +7,14 @@ import javax.sound.midi.Track;
 
 public class AcousticGrandPianoStrategy implements InstrumentStrategy{
 	private static final int ACOUSTIC_GRAND_PIANO = 0;
-    
+	/**
+     * Applies the Acoustic Grand Piano instrument sound to the specified MIDI track.
+     * This method creates a PROGRAM_CHANGE MIDI message and adds it to the track.
+     * 
+     * @param track   The MIDI track to which the instrument sound will be applied
+     * @param channel The MIDI channel on which to apply the instrument sound (0-15)
+     * @see javax.sound.midi.ShortMessage#PROGRAM_CHANGE
+     */
     @Override
     public void applyInstrument(Track track, int channel) {
         try {
