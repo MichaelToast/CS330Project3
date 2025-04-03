@@ -17,7 +17,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		try {
-			List <MidiEventData> midiEvents = MidiCsvParser.parseCsv("./files/mysterysong.csv") ;
+			List <MidiEventData> midiEvents = MidiCsvParser.parseCsv("./files/songy.csv") ;
 			Sequence sequence = new Sequence(Sequence.PPQ, 384) ;
 			Track track = sequence.createTrack() ;
 			MidiEventFactoryAbstract factoryAbstract = new StandardMidiEventFactoryAbstract() ;
