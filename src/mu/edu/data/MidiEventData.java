@@ -7,7 +7,16 @@ public class MidiEventData {
     private int noteOnOff;
     private int velocity;
     private int instrument;
-
+    /**
+     * Constructs a new MidiEventData with all parameters specified.
+     * 
+     * @param channel    The MIDI channel (0-15)
+     * @param note       The MIDI note number (0-127)
+     * @param startTick  The tick position when this event should occur
+     * @param noteOnOff  The type of event (NOTE_ON or NOTE_OFF)
+     * @param velocity   The velocity (volume) of the note (0-127)
+     * @param instrument The instrument program to use for this event
+     */
     public MidiEventData(int channel, int note, int startTick, int noteOnOff, int velocity, int instrument) {
         this.channel = channel;
         this.note = note;
@@ -26,7 +35,12 @@ public class MidiEventData {
         this.instrument = 0;
     }
 
-////Getters
+  //Getters
+    /**
+     * Gets the MIDI channel for this event.
+     * 
+     * @return The MIDI channel (0-15)
+     */
     public int getChannel() {
         return channel;
     }
@@ -52,7 +66,12 @@ public class MidiEventData {
         return instrument;
     }
     
-////Setters
+  //Setters
+    /**
+     * Sets the MIDI channel for this event.
+     * 
+     * @param channel The MIDI channel (0-15)
+     */
     public void setChannel(int channel) {
         this.channel = channel;
     }
@@ -76,7 +95,11 @@ public class MidiEventData {
     public void setInstrument(int instrument) {
         this.instrument = instrument;
     }
-
+    /**
+     * Returns a string representation of this MidiEventData.
+     * 
+     * @return A string containing all the values of this object
+     */
     @Override
     public String toString() {
         return "MidiEventData{" +
