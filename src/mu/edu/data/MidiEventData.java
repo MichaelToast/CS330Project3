@@ -35,7 +35,8 @@ public class MidiEventData {
         return note;
     }    
 
-    public int getStartTick() {
+    public int getStartEndTick() {
+    	// Think I did this right
         return startTick;
     }            
 

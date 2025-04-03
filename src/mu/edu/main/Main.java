@@ -51,12 +51,13 @@ public class Main {
 			sequencer.setSequence(sequence);
 			sequencer.start();
 			while (sequencer.isRunning() | sequencer.isOpen()){
-			Thread.sleep(100);
+				Thread.sleep(100);
 			}
 			Thread.sleep(500);
 			sequencer.close() ;
-			} catch (Exception e ) {
-			e.printStackTrace() ;
+			} 
+		catch (Exception e ) {
+				e.printStackTrace() ;
 			}
 	}
 }
